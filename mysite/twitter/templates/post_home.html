@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+</head>
+<body>
+    {% for post in post_list %}
+    <div class="container">
+        <div class="card my-3">
+            <div class="card-body">
+                <h5 class="card-title">Usuário: {{ post.user.username }}</h5>
+                <p class="card-text">{{ post.post_text }}</p>
+                <p>{{post.created_on}}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</body>
+</html>
