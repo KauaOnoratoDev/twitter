@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Detalhes do Tweet
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card my-4">
+        <div class="card-header">
+            <h5 class="card-title">{{ post_detail.username }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ post_detail.created_on }}</h6>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{ post_detail.post_text }}</p>
+            <a href="/" class="btn btn-primary">Voltar ao Feed</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
