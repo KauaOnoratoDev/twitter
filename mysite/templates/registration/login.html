@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Login</h2>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_username">Nome de usuário</label>
+            <input type="text" name="username" class="form-control" id="id_username" required>
+            {% if form.errors.username %}
+                <div class="alert alert-danger">
+                    {% for error in form.errors.username %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <label for="id_password">Senha</label>
+            <input type="password" name="password" class="form-control" id="id_password" required>
+            {% if form.errors.password %}
+                <div class="alert alert-danger">
+                    {% for error in form.errors.password %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <button type="submit" class="btn btn-primary">Login</button>
+        <a href="/accounts/register/" class="btn btn-secondary">Registrar</a>
+    </form>
+</div>
+{% endblock %}
