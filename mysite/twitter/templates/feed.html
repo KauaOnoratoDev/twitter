@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Feed
+Feed
 {% endblock %}
 
 {% block content %}
@@ -16,25 +16,64 @@
         text-decoration: none;
         color: black;
         scale: 1.01;
+        cursor: pointer;
+    }
+
+    .pagination {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .step-links {
+        margin: 0 auto
+    }
+
+    .step-links .current {
+        margin: 0 5px;
     }
 </style>
 
 <div class="container">
+    <div class="card mb-5">
+        <div class="card-header">Adicione um novo Tweet</div>
+        <div class="card-body">
+            <div class="form-group">
+                <a href="newpost/" class="form-control" id="tweet">O que está acontecendo?</a>
+            </div>
+        </div>
+    </div>
     <h2 class="my-4">Tweets Recentes</h2>
     <div class="list-group-flush">
         {% for tweet in post_list %}
-            <a href="post/{{tweet.id}}" class="list-group-item mb-5">
-                <div>
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">{{ tweet.user.username }}</h5>
-                        <small>{{ tweet.created_on }}</small>
-                    </div>
-                    <p class="mb-1">{{ tweet.post_text }}</p>
+        <a href="post/{{tweet.id}}" class="list-group-item mb-5">
+            <div>
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{ tweet.user.username }}</h5>
+                    <small>{{ tweet.created_on }}</small>
                 </div>
-            </a>
+                <p class="mb-1">{{ tweet.post_text }}</p>
+            </div>
+        </a>
         {% empty %}
-            <p class="text-center">Nenhum tweet disponível.</p>
+        <p class="text-center">Nenhum tweet disponível.</p>
         {% endfor %}
     </div>
+    <div class="pagination">
+        <span class="step-links">
+            {% if post_list.has_previous %}
+                <a href="?page={{ post_list.previous_page_number }}">
+                    <i class="bi bi-arrow-left"></i>
+                </a>
+            {% endif %}
+            <span class="current">
+                {{ post_list.number }} de {{ post_list.paginator.num_pages }}
+            </span>
+            {% if post_list.has_next %}
+                <a href="?page={{ post_list.next_page_number }}">
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            {% endif %}
+        </span>
+    </div>    
 </div>
 {% endblock %}

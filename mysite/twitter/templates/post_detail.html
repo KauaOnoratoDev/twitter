@@ -12,8 +12,11 @@
             <h6 class="card-subtitle mb-2 text-muted">{{ post_detail.created_on }}</h6>
         </div>
         <div class="card-body">
-            <p class="card-text">{{ post_detail.post_text }}</p>
-            <a href="/" class="btn btn-primary">Voltar ao Feed</a>
+            <p class="card-text mb-5">{{ post_detail.post_text }}</p>
+            <div class="d-flex justify-content-between">
+                <a href="/" class="btn btn-primary">Voltar ao Feed</a>
+                <a href="deletepost/{{post_detail.id}}" class="btn btn-danger">Deletar Tweet</a>
+            </div>
         </div>
     </div>
 </div>
