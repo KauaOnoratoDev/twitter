@@ -65,9 +65,11 @@ Feed
                     <i class="bi bi-arrow-left"></i>
                 </a>
             {% endif %}
-            <span class="current">
-                {{ post_list.number }} de {{ post_list.paginator.num_pages }}
-            </span>
+            {% if post_list %}
+                <span class="current">
+                    {{ post_list.number }} de {{ post_list.paginator.num_pages }}
+                </span>
+            {% endif %}
             {% if post_list.has_next %}
                 <a href="?page={{ post_list.next_page_number }}">
                     <i class="bi bi-arrow-right"></i>
