@@ -80,11 +80,8 @@ WSGI_APPLICATION = "mysite.wsgi.application"
 # Replace the SQLite DATABASES configuration with PostgreSQL:
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'faketwitter',
-        'USER': 'postgres',
-        'PASSWORD': 'kaua',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),  # Caminho para o arquivo do banco de dados SQLite
     }
 }
 
